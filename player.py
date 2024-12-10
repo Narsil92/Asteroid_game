@@ -34,7 +34,7 @@ class Player(CircleShape):
         if keys[pygame.K_UP]:    
            self.move(dt)
 
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN]: # actually this was supposed to make ship move backwards but make it accelerate which is cooler ;) 
             self.move(dt)      
 
     def move(self,dt):
