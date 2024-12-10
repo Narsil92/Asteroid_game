@@ -4,14 +4,23 @@
 import pygame  
 from constants import *
 
+#var to keep infitnie while loop to make game screen black
+
+
 
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
+
+    while True: # infitnie loop that make game running 
+        for event in pygame.event.get(): 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE: # press escape on keyboard to exit game
+                    return 
+        screen.fill((0, 0, 0))
+        pygame.display.flip()
+    
 
 
 
