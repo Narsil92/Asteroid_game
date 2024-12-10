@@ -4,6 +4,7 @@
 import pygame  
 from constants import *
 from circleshape import *
+from player import *
 
 #var to keep infitnie while loop to make game screen black
 
@@ -18,6 +19,9 @@ def main():
     clock_timer = pygame.time.Clock() # instance of pygame.time.Clock to be used inside loop
     dt = 0
 
+    # Create the Player instance at the middle of the screen
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
 
     while True: # infitnie loop that make game running 
         clock_timer.tick(60)
@@ -29,6 +33,7 @@ def main():
             if event.type == pygame.QUIT: # click close ikon at window level to exit game
                 return        
         screen.fill((0, 0, 0))
+        player.draw(screen) # put player on the screen        
         pygame.display.flip()
     
 
