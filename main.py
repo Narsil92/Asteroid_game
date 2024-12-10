@@ -17,7 +17,9 @@ def main():
         for event in pygame.event.get(): 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE: # press escape on keyboard to exit game
-                    return 
+                    return        
+            if event.type == pygame.QUIT: # click close ikon at window level to exit game
+                return        
         screen.fill((0, 0, 0))
         pygame.display.flip()
     
