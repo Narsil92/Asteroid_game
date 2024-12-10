@@ -13,7 +13,14 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    pygame.time.Clock # using to setup FPS limit at 60
+    clock_timer = pygame.time.Clock() # instance of pygame.time.Clock to be used inside loop
+    dt = 0
+
+
     while True: # infitnie loop that make game running 
+        clock_timer.tick(60)
+        
         for event in pygame.event.get(): 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE: # press escape on keyboard to exit game
