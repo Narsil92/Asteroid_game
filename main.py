@@ -31,7 +31,8 @@ def main():
                 if event.key == pygame.K_ESCAPE: # press escape on keyboard to exit game
                     return        
             if event.type == pygame.QUIT: # click close ikon at window level to exit game
-                return        
+                return
+        player.update(dt)            
         screen.fill((0, 0, 0))
         player.draw(screen) # put player on the screen        
         pygame.display.flip()
