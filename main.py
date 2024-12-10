@@ -3,6 +3,7 @@
 # throughout this file
 import pygame  
 from constants import *
+from circleshape import *
 
 #var to keep infitnie while loop to make game screen black
 
@@ -20,7 +21,7 @@ def main():
 
     while True: # infitnie loop that make game running 
         clock_timer.tick(60)
-        
+        dt = clock_timer.tick(60)/1000      
         for event in pygame.event.get(): 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE: # press escape on keyboard to exit game
