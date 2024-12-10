@@ -6,9 +6,6 @@ from constants import *
 from circleshape import *
 from player import *
 
-#var to keep infitnie while loop to make game screen black
-
-
 
 
 def main():
@@ -18,6 +15,13 @@ def main():
     pygame.time.Clock # using to setup FPS limit at 60
     clock_timer = pygame.time.Clock() # instance of pygame.time.Clock to be used inside loop
     dt = 0
+
+    updatable=pygame.sprite.Group() # player
+    drawable=pygame.sprite.Group()  ## groups 
+
+    #Tell the Player class which groups to join
+    Player.containers = (updatable, drawable)
+
 
     # Create the Player instance at the middle of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -32,9 +36,16 @@ def main():
                     return        
             if event.type == pygame.QUIT: # click close ikon at window level to exit game
                 return
-        player.update(dt)            
+         
+        for sprite in updatable:
+            sprite.update(dt)            
+        
         screen.fill((0, 0, 0))
-        player.draw(screen) # put player on the screen        
+
+        for sprite in drawable:
+            sprite.draw(screen)
+
+               
         pygame.display.flip()
     
 
