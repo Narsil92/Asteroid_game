@@ -5,7 +5,7 @@ import pygame
 from constants import *
 from circleshape import *
 from player import *
-from asteroids import *
+from asteroid import *
 from asteroidfield import *
 
 
@@ -28,14 +28,20 @@ def main():
     #Tell the Player class which groups to join
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
-    
+    AsteroidField.containers = (updatable,)
 
     # Create the Player instance at the middle of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
+     # Create the asteroid field
+    asteroid_field = AsteroidField()
+    print("Updatable group size:", len(updatable))
+    print("Drawable group size:", len(drawable))
+    print("Asteroids group size:", len(asteroids))
 
 
     while True: # infitnie loop that make game running 
-        clock_timer.tick(60)
+        
         dt = clock_timer.tick(60)/1000      
         for event in pygame.event.get(): 
             if event.type == pygame.KEYDOWN:
