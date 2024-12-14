@@ -65,7 +65,7 @@ def main():
             for a in asteroids:
                 if s.collision_check(a):
                     s.kill()
-                    a.kill()
+                    a.split()
                     
             
                                     
