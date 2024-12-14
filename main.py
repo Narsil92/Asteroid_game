@@ -2,11 +2,13 @@
 # the open-source pygame library
 # throughout this file
 import pygame  
+import sys
 from constants import *
 from circleshape import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+
 
 
 
@@ -51,7 +53,12 @@ def main():
                 return
          
         for sprite in updatable:
-            sprite.update(dt)            
+            sprite.update(dt)
+
+        for a in asteroids:
+            if player.collision_check(a):
+                print("Game Over")
+                sys.exit()                
         
         screen.fill((0, 0, 0))
 
