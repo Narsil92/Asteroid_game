@@ -8,7 +8,7 @@ from circleshape import *
 from player import *
 from asteroid import *
 from asteroidfield import *
-
+from shot import Shot
 
 
 
@@ -26,14 +26,17 @@ def main():
 
     asteroids = pygame.sprite.Group() #groups for asteroids object
 
+    shots= pygame.sprite.Group() # group that will keep player shot object
+
 
     #Tell the Player class which groups to join
     Player.containers = (updatable, drawable)
+    Shot.containers = (shots,updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable,)
 
     # Create the Player instance at the middle of the screen
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, shots)
     
      # Create the asteroid field
     asteroid_field = AsteroidField()
@@ -52,11 +55,20 @@ def main():
          
         for sprite in updatable:
             sprite.update(dt)
-
-        for a in asteroids:
+          
+        for a in asteroids:     #checking if player hit asteroids   
             if player.collision_check(a):
                 print("Game Over")
-                sys.exit()                
+                sys.exit()   
+
+        for s in shots:#logic to shot asteroids
+            for a in asteroids:
+                if s.collision_check(a):
+                    s.kill()
+                    a.kill()
+                    
+            
+                                    
         
         screen.fill((0, 0, 0))
 
