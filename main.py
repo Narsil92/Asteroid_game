@@ -37,9 +37,7 @@ def main():
     
      # Create the asteroid field
     asteroid_field = AsteroidField()
-    print("Updatable group size:", len(updatable))
-    print("Drawable group size:", len(drawable))
-    print("Asteroids group size:", len(asteroids))
+   
 
 
     while True: # infitnie loop that make game running 
